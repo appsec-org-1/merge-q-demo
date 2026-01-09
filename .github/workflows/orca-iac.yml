@@ -1,9 +1,5 @@
-name: Sample Orca IaC Scan Workflow
+name: Orca IaC Scan Workflow
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
   merge_group:
     branches: [ "main" ]
 
