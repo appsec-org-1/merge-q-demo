@@ -1,0 +1,29 @@
+name: Sample Orca IaC Scan Workflow
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  merge_group:
+    branches: [ "main" ]
+
+jobs:
+  orca_iac_scan:
+    name: Orca IaC Scan
+    runs-on: ubuntu-latest
+    
+    env:
+      PROJECT_KEY: slrk
+        
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Run Orca IaC Scan
+        uses: orcasecurity/shiftleft-iac-action@v1
+        with:
+          api_token: ${{ secrets.ORCA_SECURITY_API_TOKEN }}
+          project_key: ${{ env.PROJECT_KEY }}
+          path:
+            ./ 
+          show_annotations: false
